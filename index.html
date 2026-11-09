@@ -39,8 +39,12 @@
   var state = q.get("state") || "";
   var home = homes[state.split("~").pop()] || homes.m;
   var target = home + "/callback" + location.search;
-  document.getElementById("msg").innerHTML =
-    'Signing you in to mytunes… <a href="' + target.replace(/"/g, "&quot;") + '">Continue</a>';
+  var a = document.createElement("a");
+  a.href = target;
+  a.textContent = "Continue";
+  var msg = document.getElementById("msg");
+  msg.appendChild(document.createTextNode(" "));
+  msg.appendChild(a);
   location.replace(target);
 })();
 </script>
